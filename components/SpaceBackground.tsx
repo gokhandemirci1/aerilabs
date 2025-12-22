@@ -44,7 +44,8 @@ export default function SpaceBackground() {
       isCyan: boolean;
     }> = [];
 
-    const starCount = 200;
+    // Reduced star count for better performance
+    const starCount = 150;
     for (let i = 0; i < starCount; i++) {
       stars.push({
         x: Math.random() * canvas.width,
@@ -62,11 +63,22 @@ export default function SpaceBackground() {
 
     let animationFrameId: number;
     let time = 0;
+    let lastFrameTime = performance.now();
+    const targetFPS = 60;
+    const frameInterval = 1000 / targetFPS;
 
-    const animate = () => {
+    const animate = (currentTime: number) => {
+      // Throttle to 60 FPS for better performance
+      const elapsed = currentTime - lastFrameTime;
+      if (elapsed < frameInterval) {
+        animationFrameId = requestAnimationFrame(animate);
+        return;
+      }
+      lastFrameTime = currentTime - (elapsed % frameInterval);
+
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      time += 0.01;
+      time += 0.008; // Slightly reduced for smoother animation
 
       // Smooth mouse position interpolation
       mousePosRef.current.x += (targetMousePosRef.current.x - mousePosRef.current.x) * 0.05;
@@ -108,8 +120,8 @@ export default function SpaceBackground() {
         const normalizedTrailX = trailMagnitude > 0 ? trailDirX / trailMagnitude : 0;
         const normalizedTrailY = trailMagnitude > 0 ? trailDirY / trailMagnitude : 0;
         
-        // Draw star trail
-        const trailSteps = 8;
+        // Draw star trail - reduced steps for performance
+        const trailSteps = 5;
         for (let i = 0; i < trailSteps; i++) {
           const trailProgress = i / trailSteps;
           const trailX = starX + normalizedTrailX * trailLength * trailProgress * Math.abs(offsetX + offsetY);
@@ -173,7 +185,7 @@ export default function SpaceBackground() {
       animationFrameId = requestAnimationFrame(animate);
     };
 
-    animate();
+    animate(performance.now());
 
     return () => {
       window.removeEventListener("resize", resizeCanvas);

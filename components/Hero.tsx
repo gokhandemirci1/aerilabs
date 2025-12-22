@@ -46,16 +46,12 @@ export default function Hero() {
             <div className="absolute inset-0 bg-gradient-to-br from-neon-cyan/30 to-electric-purple/30 rounded-full blur-xl md:blur-2xl animate-pulse" />
             {/* Middle glow ring */}
             <div className="absolute inset-2 md:inset-4 bg-gradient-to-br from-neon-cyan/20 to-electric-purple/20 rounded-full blur-lg md:blur-xl" />
-            {/* Logo container with rotation */}
-            <motion.div
+            {/* Logo container with rotation - CSS animation for better performance */}
+            <div
               className="relative w-full h-full z-10"
-              animate={{
-                rotate: 360,
-              }}
-              transition={{
-                duration: 20,
-                repeat: Infinity,
-                ease: "linear",
+              style={{
+                animation: "logoRotate 20s linear infinite",
+                willChange: "transform",
               }}
             >
               <Image
@@ -66,7 +62,7 @@ export default function Hero() {
                 priority
                 sizes="(max-width: 640px) 160px, (max-width: 768px) 192px, (max-width: 1024px) 224px, (max-width: 1280px) 256px, 288px"
               />
-            </motion.div>
+            </div>
           </div>
         </motion.div>
         

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo, useCallback } from "react";
 
 const projects = [
   {
@@ -51,26 +51,26 @@ export default function GalaxyOrbit() {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  // Calculate safe orbit radius based on viewport size
-  // Account for planet size (max ~104px on desktop, ~72px on mobile) + padding
-  const planetSize = isMobile ? 72 : 104;
-  const padding = 40;
-  const maxSafeRadius = (Math.min(windowSize.width, windowSize.height) - planetSize - padding) / 2;
-  
-  // Responsive orbit configuration - ensure cards stay within viewport
-  const orbitConfig = isMobile
-    ? [
-        { radius: Math.min(80, maxSafeRadius * 0.5), speed: 25, startAngle: 0 },
-        { radius: Math.min(100, maxSafeRadius * 0.65), speed: -18, startAngle: 90 },
-        { radius: Math.min(115, maxSafeRadius * 0.8), speed: 15, startAngle: 180 },
-        { radius: Math.min(130, maxSafeRadius * 0.95), speed: -12, startAngle: 270 },
-      ]
-    : [
-        { radius: Math.min(120, maxSafeRadius * 0.55), speed: 20, startAngle: 0 },
-        { radius: Math.min(150, maxSafeRadius * 0.7), speed: -15, startAngle: 45 },
-        { radius: Math.min(170, maxSafeRadius * 0.85), speed: 12, startAngle: 90 },
-        { radius: Math.min(190, maxSafeRadius), speed: -10, startAngle: 135 },
-      ];
+  // Calculate safe orbit radius based on viewport size - memoized for performance
+  const orbitConfig = useMemo(() => {
+    const planetSize = isMobile ? 72 : 104;
+    const padding = 40;
+    const maxSafeRadius = (Math.min(windowSize.width, windowSize.height) - planetSize - padding) / 2;
+    
+    return isMobile
+      ? [
+          { radius: Math.min(80, maxSafeRadius * 0.5), speed: 30, startAngle: 0 },
+          { radius: Math.min(100, maxSafeRadius * 0.65), speed: -22, startAngle: 90 },
+          { radius: Math.min(115, maxSafeRadius * 0.8), speed: 18, startAngle: 180 },
+          { radius: Math.min(130, maxSafeRadius * 0.95), speed: -15, startAngle: 270 },
+        ]
+      : [
+          { radius: Math.min(120, maxSafeRadius * 0.55), speed: 25, startAngle: 0 },
+          { radius: Math.min(150, maxSafeRadius * 0.7), speed: -20, startAngle: 45 },
+          { radius: Math.min(170, maxSafeRadius * 0.85), speed: 15, startAngle: 90 },
+          { radius: Math.min(190, maxSafeRadius), speed: -12, startAngle: 135 },
+        ];
+  }, [isMobile, windowSize.width, windowSize.height]);
 
   return (
     <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
@@ -118,6 +118,7 @@ export default function GalaxyOrbit() {
             style={{
               left: "50%",
               top: "50%",
+              willChange: "transform",
             }}
             animate={{
               rotate: config.speed > 0 ? 360 : -360,
@@ -133,6 +134,7 @@ export default function GalaxyOrbit() {
               style={{
                 x: Math.cos(angle) * config.radius,
                 y: Math.sin(angle) * config.radius,
+                willChange: "transform",
               }}
               animate={{
                 rotate: config.speed > 0 ? -360 : 360,
@@ -144,8 +146,8 @@ export default function GalaxyOrbit() {
               }}
               className="relative"
             >
-              {/* Trail particles - space themed trail behind planet */}
-              {Array.from({ length: isMobile ? 10 : 15 }).map((_, trailIndex) => {
+              {/* Trail particles - space themed trail behind planet - reduced for performance */}
+              {Array.from({ length: isMobile ? 6 : 10 }).map((_, trailIndex) => {
                 // Calculate trail position - behind planet in orbit
                 const trailOffset = (trailIndex + 1) * 0.12; // Angular offset behind planet
                 const trailAngleOffset = config.speed > 0 ? -trailOffset : trailOffset;
