@@ -114,7 +114,7 @@ export default function GalaxyOrbit() {
         return (
           <motion.div
             key={project.name}
-            className="absolute pointer-events-auto"
+            className="absolute pointer-events-auto group"
             style={{
               left: "50%",
               top: "50%",
@@ -128,7 +128,6 @@ export default function GalaxyOrbit() {
               ease: "linear",
             }}
             whileHover={{ scale: 1.15, zIndex: 50 }}
-            className="group"
           >
             <motion.div
               style={{
