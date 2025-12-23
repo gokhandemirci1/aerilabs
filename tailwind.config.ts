@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        "void-black": "#07070B",
+        "void-black": "#08090c",
         "deep-space-blue": "#0E1A2B",
         "neon-cyan": "#27E0E6",
         "electric-purple": "#8B5CF6",
