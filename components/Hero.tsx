@@ -27,11 +27,6 @@ export default function Hero() {
       <div className="ambient-glow top-1/4 right-1/4 opacity-50" style={{ animationDelay: "2s" }} />
       <div className="ambient-glow bottom-1/4 left-1/4 opacity-40" style={{ animationDelay: "4s" }} />
       
-      {/* Floating Planets */}
-      <div className="planet w-32 h-32 bg-gradient-to-br from-neon-cyan/20 to-electric-purple/20 top-20 right-20" style={{ animationDelay: "0s" }} />
-      <div className="planet w-24 h-24 bg-gradient-to-br from-electric-purple/20 to-neon-cyan/20 bottom-32 left-16" style={{ animationDelay: "3s" }} />
-      <div className="planet w-16 h-16 bg-gradient-to-br from-neon-cyan/15 to-transparent top-1/3 left-1/4" style={{ animationDelay: "6s" }} />
-      
       <GalaxyOrbit />
       
       <div className="container mx-auto px-6 text-center relative z-10 flex flex-col items-center justify-center">
