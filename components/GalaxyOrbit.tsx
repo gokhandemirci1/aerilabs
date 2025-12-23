@@ -121,7 +121,16 @@ export default function GalaxyOrbit() {
               willChange: "transform",
             }}
             animate={{
-              rotate: config.speed > 0 ? 360 : -360,
+              x: [
+                Math.cos(angle) * config.radius,
+                Math.cos(angle + Math.PI) * config.radius,
+                Math.cos(angle + Math.PI * 2) * config.radius,
+              ],
+              y: [
+                Math.sin(angle) * config.radius,
+                Math.sin(angle + Math.PI) * config.radius,
+                Math.sin(angle + Math.PI * 2) * config.radius,
+              ],
             }}
             transition={{
               duration: Math.abs(config.speed),
@@ -130,21 +139,11 @@ export default function GalaxyOrbit() {
             }}
             whileHover={{ scale: 1.15, zIndex: 50 }}
           >
-            <motion.div
+            <div
+              className="relative"
               style={{
-                x: Math.cos(angle) * config.radius,
-                y: Math.sin(angle) * config.radius,
                 willChange: "transform",
               }}
-              animate={{
-                rotate: config.speed > 0 ? -360 : 360,
-              }}
-              transition={{
-                duration: Math.abs(config.speed),
-                repeat: Infinity,
-                ease: "linear",
-              }}
-              className="relative"
             >
               {/* Trail particles - space themed trail behind planet - reduced for performance */}
               {Array.from({ length: isMobile ? 6 : 10 }).map((_, trailIndex) => {
@@ -272,7 +271,7 @@ export default function GalaxyOrbit() {
                   </div>
                 </motion.div>
               </div>
-            </motion.div>
+            </div>
           </motion.div>
         );
       })}
