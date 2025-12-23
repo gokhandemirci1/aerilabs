@@ -60,15 +60,6 @@ export default function Hero() {
           </div>
         </motion.div>
         
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-6xl md:text-8xl lg:text-9xl font-bold mb-6"
-        >
-          <span className="text-gradient drop-shadow-[0_0_30px_rgba(39,224,230,0.5)]">Aeri Labs</span>
-        </motion.h1>
-        
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
