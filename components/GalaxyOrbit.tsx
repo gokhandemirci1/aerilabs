@@ -7,6 +7,7 @@ const projects = [
   {
     name: "KISIR APP",
     tech: "Next.js • TypeScript",
+    description: "Women-only social app for real friendships",
     gradient: "from-cyan-400 via-blue-500 to-purple-600",
     glowColor: "rgba(39, 224, 230, 0.6)",
     size: "w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24",
@@ -260,10 +261,15 @@ export default function GalaxyOrbit() {
                   whileHover={{ opacity: 1, y: 0, scale: 1 }}
                   className="absolute top-full left-1/2 -translate-x-1/2 mt-4 pointer-events-none z-50 whitespace-nowrap"
                 >
-                  <div className="bg-void-black/90 backdrop-blur-sm border border-neon-cyan/30 rounded-lg px-3 py-2 shadow-lg">
+                  <div className="bg-void-black/90 backdrop-blur-sm border border-neon-cyan/30 rounded-lg px-3 py-2 shadow-lg max-w-xs">
                     <h3 className="text-xs md:text-sm font-semibold text-gradient mb-1">
                       {project.name}
                     </h3>
+                    {project.description && (
+                      <p className="text-[10px] md:text-xs text-soft-white/80 mb-1 whitespace-normal">
+                        {project.description}
+                      </p>
+                    )}
                     <p className="text-[10px] md:text-xs text-soft-white/70">
                       {project.tech}
                     </p>
