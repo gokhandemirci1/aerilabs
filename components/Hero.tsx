@@ -47,7 +47,7 @@ export default function Hero() {
             
             {/* Logo container with rotation - CSS animation for better performance */}
             <div
-              className="relative w-full h-full z-10"
+              className="relative w-full h-full z-10 rounded-full overflow-hidden"
               style={{
                 animation: "logoRotate 20s linear infinite",
                 willChange: "transform",
@@ -57,7 +57,7 @@ export default function Hero() {
                 src={logoImage}
                 alt="Aeri Labs Logo"
                 fill
-                className="object-contain drop-shadow-[0_0_30px_rgba(39,224,230,0.3)] md:drop-shadow-[0_0_40px_rgba(39,224,230,0.4)]"
+                className="object-cover rounded-full drop-shadow-[0_0_30px_rgba(39,224,230,0.3)] md:drop-shadow-[0_0_40px_rgba(39,224,230,0.4)]"
                 priority
                 sizes="(max-width: 640px) 192px, (max-width: 768px) 224px, (max-width: 1024px) 256px, (max-width: 1280px) 288px, 320px"
               />
