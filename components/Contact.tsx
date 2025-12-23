@@ -13,11 +13,58 @@ export default function Contact() {
     email: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{ type: 'success' | 'error' | null; message: string }>({ type: null, message: '' });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Google Apps Script Web App URL'ini buraya yapıştır
+  const GOOGLE_SCRIPT_URL = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL || '';
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log("Form submitted:", formData);
+    
+    if (!GOOGLE_SCRIPT_URL) {
+      setSubmitStatus({
+        type: 'error',
+        message: 'Form yapılandırması eksik. Lütfen yöneticiye ulaşın.'
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: '' });
+
+    try {
+      const response = await fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setSubmitStatus({
+          type: 'success',
+          message: 'Mesajınız başarıyla gönderildi! En kısa sürede size dönüş yapacağız.'
+        });
+        // Formu temizle
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        setSubmitStatus({
+          type: 'error',
+          message: result.message || 'Bir hata oluştu. Lütfen tekrar deneyin.'
+        });
+      }
+    } catch (error) {
+      setSubmitStatus({
+        type: 'error',
+        message: 'Bağlantı hatası. Lütfen internet bağlantınızı kontrol edin ve tekrar deneyin.'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (
@@ -114,15 +161,35 @@ export default function Contact() {
               />
             </div>
             
+            {/* Status Message */}
+            {submitStatus.type && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className={`p-4 rounded-lg ${
+                  submitStatus.type === 'success'
+                    ? 'bg-neon-cyan/20 border border-neon-cyan/50 text-neon-cyan'
+                    : 'bg-red-500/20 border border-red-500/50 text-red-400'
+                }`}
+              >
+                {submitStatus.message}
+              </motion.div>
+            )}
+
             <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={!isSubmitting ? { scale: 1.05 } : {}}
+              whileTap={!isSubmitting ? { scale: 0.95 } : {}}
               type="submit"
-              className="w-full px-8 py-4 bg-signature-gradient text-void-black font-semibold rounded-full hover:shadow-lg hover:shadow-neon-cyan/50 transition-all duration-300 flex items-center justify-center gap-2 relative overflow-hidden group"
+              disabled={isSubmitting}
+              className={`w-full px-8 py-4 bg-signature-gradient text-void-black font-semibold rounded-full hover:shadow-lg hover:shadow-neon-cyan/50 transition-all duration-300 flex items-center justify-center gap-2 relative overflow-hidden group ${
+                isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
+              }`}
             >
               <span className="relative z-10 flex items-center gap-2">
-                Transmit Message
-                <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                {isSubmitting ? 'Gönderiliyor...' : 'Transmit Message'}
+                {!isSubmitting && (
+                  <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                )}
               </span>
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
             </motion.button>
