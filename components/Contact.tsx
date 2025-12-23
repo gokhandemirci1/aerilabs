@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Mail, Send } from "lucide-react";
+import { Mail, Send, Phone } from "lucide-react";
 
 export default function Contact() {
   const ref = useRef(null);
@@ -11,6 +11,7 @@ export default function Contact() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -50,7 +51,7 @@ export default function Contact() {
           message: 'Mesajınız başarıyla gönderildi! En kısa sürede size dönüş yapacağız.'
         });
         // Formu temizle
-        setFormData({ name: "", email: "", message: "" });
+        setFormData({ name: "", email: "", phone: "", message: "" });
       } else {
         setSubmitStatus({
           type: 'error',
@@ -144,6 +145,24 @@ export default function Contact() {
             
             <div>
               <label
+                htmlFor="phone"
+                className="block text-sm font-medium text-soft-white/70 mb-2"
+              >
+                Phone
+              </label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan transition-all text-soft-white placeholder:text-soft-white/30"
+                placeholder="+90 555 123 4567"
+              />
+            </div>
+            
+            <div>
+              <label
                 htmlFor="message"
                 className="block text-sm font-medium text-soft-white/70 mb-2"
               >
@@ -186,7 +205,7 @@ export default function Contact() {
               }`}
             >
               <span className="relative z-10 flex items-center gap-2">
-                {isSubmitting ? 'Gönderiliyor...' : 'Transmit Message'}
+                {isSubmitting ? 'Gönderiliyor...' : 'Submit Message'}
                 {!isSubmitting && (
                   <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 )}
@@ -199,10 +218,10 @@ export default function Contact() {
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-col justify-center items-center md:items-start"
+            className="flex flex-col justify-center items-center md:items-start space-y-4"
           >
-            <p className="text-soft-white/70 mb-6 text-lg">
-              Or reach out directly via email:
+            <p className="text-soft-white/70 mb-2 text-lg">
+              Or reach out directly:
             </p>
             <motion.a
               href="mailto:hello@aerilabs.com"
@@ -212,6 +231,15 @@ export default function Contact() {
             >
               <Mail className="w-6 h-6" />
               hello@aerilabs.com
+            </motion.a>
+            <motion.a
+              href="tel:+905551234567"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="flex items-center gap-3 text-neon-cyan hover:text-electric-purple transition-colors text-lg"
+            >
+              <Phone className="w-6 h-6" />
+              +90 555 123 4567
             </motion.a>
           </motion.div>
         </div>

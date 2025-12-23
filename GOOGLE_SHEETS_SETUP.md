@@ -10,8 +10,9 @@
    ```
    A1: Name
    B1: Email
-   C1: Message
-   D1: Timestamp
+   C1: Phone
+   D1: Message
+   E1: Timestamp
    ```
 4. Sayfayı adlandır (örn: "Contact Form Submissions")
 

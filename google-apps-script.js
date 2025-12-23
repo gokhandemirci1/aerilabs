@@ -33,6 +33,7 @@ function doPost(e) {
     const rowData = [
       data.name || '',
       data.email || '',
+      data.phone || '',
       data.message || '',
       timestamp
     ];
