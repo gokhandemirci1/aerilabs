@@ -5,7 +5,7 @@ import { useEffect, useState, useMemo, useCallback } from "react";
 
 const projects = [
   {
-    name: "Project Alpha",
+    name: "KISIR APP",
     tech: "Next.js • TypeScript",
     gradient: "from-cyan-400 via-blue-500 to-purple-600",
     glowColor: "rgba(39, 224, 230, 0.6)",

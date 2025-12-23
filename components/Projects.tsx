@@ -7,7 +7,7 @@ import { ExternalLink } from "lucide-react";
 
 const projects = [
   {
-    name: "Project Alpha",
+    name: "KISIR APP",
     description: "A revolutionary platform that transforms how teams collaborate.",
     tech: "Next.js • TypeScript • Tailwind • Framer Motion",
   },
