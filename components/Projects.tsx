@@ -7,7 +7,7 @@ import { ExternalLink } from "lucide-react";
 
 const projects = [
   {
-    name: "KISIR APP",
+    name: "KISIR App",
     description: "KISIR is a women-only social app that helps women meet nearby, connect naturally, and build real-life friendships. From chat to real gatherings.",
   },
   {

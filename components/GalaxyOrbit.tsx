@@ -5,7 +5,7 @@ import { useEffect, useState, useMemo, useCallback } from "react";
 
 const projects = [
   {
-    name: "KISIR APP",
+    name: "KISIR App",
     tech: "Next.js • TypeScript",
     description: "Women-only social app for real friendships",
     gradient: "from-cyan-400 via-blue-500 to-purple-600",
