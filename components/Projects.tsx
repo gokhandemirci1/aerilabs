@@ -9,22 +9,18 @@ const projects = [
   {
     name: "KISIR APP",
     description: "KISIR is a women-only social app that helps women meet nearby, connect naturally, and build real-life friendships. From chat to real gatherings.",
-    tech: "Next.js • TypeScript • Tailwind • Framer Motion",
   },
   {
     name: "Project Beta",
     description: "AI-powered automation tool that streamlines complex workflows.",
-    tech: "React • Python • TensorFlow • PostgreSQL",
   },
   {
     name: "Project Gamma",
     description: "Enterprise-grade software solution for modern businesses.",
-    tech: "Vue.js • Node.js • MongoDB • AWS",
   },
   {
     name: "Project Delta",
     description: "Cutting-edge mobile application with seamless user experience.",
-    tech: "React Native • GraphQL • Firebase • Stripe",
   },
 ];
 
@@ -68,11 +64,8 @@ export default function Projects() {
                 </h3>
                 <ExternalLink className="w-5 h-5 text-neon-cyan opacity-0 group-hover:opacity-100 transition-opacity" />
               </div>
-              <p className="text-soft-white/70 mb-4 text-lg">
+              <p className="text-soft-white/70 text-lg">
                 {project.description}
-              </p>
-              <p className="text-soft-white/50 text-sm">
-                {project.tech}
               </p>
               <div className="absolute inset-0 bg-gradient-to-br from-neon-cyan/0 to-electric-purple/0 group-hover:from-neon-cyan/5 group-hover:to-electric-purple/5 rounded-lg transition-all duration-300 pointer-events-none" />
             </motion.div>
