@@ -7,6 +7,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Aeri Labs - Experimental digital products & scalable software solutions",
   description: "Experimental digital products & scalable software solutions",
+  icons: {
+    icon: "/icon.jpg",
+  },
 };
 
 export default function RootLayout({
