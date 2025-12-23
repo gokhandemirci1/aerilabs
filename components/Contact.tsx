@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Mail, Send, Phone } from "lucide-react";
+import { Mail, Send } from "lucide-react";
 
 export default function Contact() {
   const ref = useRef(null);
@@ -218,28 +218,19 @@ export default function Contact() {
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-col justify-center items-center md:items-start space-y-4"
+            className="flex flex-col justify-center items-center md:items-start"
           >
-            <p className="text-soft-white/70 mb-2 text-lg">
+            <p className="text-soft-white/70 mb-6 text-lg">
               Or reach out directly:
             </p>
             <motion.a
-              href="mailto:hello@aerilabs.com"
+              href="mailto:alinaavsar@aerilabs.com"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="flex items-center gap-3 text-neon-cyan hover:text-electric-purple transition-colors text-lg"
             >
               <Mail className="w-6 h-6" />
-              hello@aerilabs.com
-            </motion.a>
-            <motion.a
-              href="tel:+905551234567"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-3 text-neon-cyan hover:text-electric-purple transition-colors text-lg"
-            >
-              <Phone className="w-6 h-6" />
-              +90 555 123 4567
+              alinaavsar@aerilabs.com
             </motion.a>
           </motion.div>
         </div>
