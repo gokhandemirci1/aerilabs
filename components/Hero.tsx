@@ -41,11 +41,10 @@ export default function Hero() {
           transition={{ duration: 1, delay: 0.2, type: "spring" }}
           className="mb-8 md:mb-10 lg:mb-12 flex items-center justify-center relative z-20"
         >
-          <div className="relative w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 xl:w-72 xl:h-72 mx-auto">
-            {/* Outer glow effect - responsive */}
-            <div className="absolute inset-0 bg-gradient-to-br from-neon-cyan/30 to-electric-purple/30 rounded-full blur-xl md:blur-2xl animate-pulse" />
-            {/* Middle glow ring */}
-            <div className="absolute inset-2 md:inset-4 bg-gradient-to-br from-neon-cyan/20 to-electric-purple/20 rounded-full blur-lg md:blur-xl" />
+          <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 xl:w-80 xl:h-80 mx-auto">
+            {/* Subtle glow effect - more professional */}
+            <div className="absolute inset-0 bg-gradient-to-br from-neon-cyan/10 to-electric-purple/10 blur-2xl md:blur-3xl animate-pulse" />
+            
             {/* Logo container with rotation - CSS animation for better performance */}
             <div
               className="relative w-full h-full z-10"
@@ -58,9 +57,9 @@ export default function Hero() {
                 src={logoImage}
                 alt="Aeri Labs Logo"
                 fill
-                className="object-contain rounded-full p-3 sm:p-4 md:p-5 lg:p-6 bg-void-black/50 backdrop-blur-sm border-2 md:border-[3px] lg:border-4 border-neon-cyan/30 shadow-[0_0_40px_rgba(39,224,230,0.5)] md:shadow-[0_0_60px_rgba(39,224,230,0.6)] lg:shadow-[0_0_80px_rgba(39,224,230,0.7)]"
+                className="object-contain drop-shadow-[0_0_30px_rgba(39,224,230,0.3)] md:drop-shadow-[0_0_40px_rgba(39,224,230,0.4)]"
                 priority
-                sizes="(max-width: 640px) 160px, (max-width: 768px) 192px, (max-width: 1024px) 224px, (max-width: 1280px) 256px, 288px"
+                sizes="(max-width: 640px) 192px, (max-width: 768px) 224px, (max-width: 1024px) 256px, (max-width: 1280px) 288px, 320px"
               />
             </div>
           </div>
