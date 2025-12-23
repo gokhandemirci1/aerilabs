@@ -36,7 +36,7 @@ export default function Hero() {
           transition={{ duration: 1, delay: 0.2, type: "spring" }}
           className="mb-8 md:mb-10 lg:mb-12 flex items-center justify-center relative z-20"
         >
-          <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 xl:w-80 xl:h-80 mx-auto">
+          <div className="relative w-40 h-40 sm:w-44 sm:h-44 md:w-52 md:h-52 lg:w-60 lg:h-60 xl:w-64 xl:h-64 mx-auto">
             {/* Subtle glow effect - more professional */}
             <div className="absolute inset-0 bg-gradient-to-br from-neon-cyan/10 to-electric-purple/10 blur-2xl md:blur-3xl animate-pulse" />
             
@@ -54,7 +54,7 @@ export default function Hero() {
                 fill
                 className="object-cover rounded-full drop-shadow-[0_0_30px_rgba(39,224,230,0.3)] md:drop-shadow-[0_0_40px_rgba(39,224,230,0.4)]"
                 priority
-                sizes="(max-width: 640px) 192px, (max-width: 768px) 224px, (max-width: 1024px) 256px, (max-width: 1280px) 288px, 320px"
+                sizes="(max-width: 640px) 160px, (max-width: 768px) 176px, (max-width: 1024px) 208px, (max-width: 1280px) 240px, 256px"
               />
             </div>
           </div>
