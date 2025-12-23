@@ -5,7 +5,6 @@ import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import logoImage from "@/app/images/logo.jpg";
 import SpaceBackground from "./SpaceBackground";
-import GalaxyOrbit from "./GalaxyOrbit";
 
 export default function Hero() {
   const scrollToSection = (id: string) => {
@@ -27,8 +26,6 @@ export default function Hero() {
       <div className="ambient-glow top-1/4 right-1/4 opacity-50" style={{ animationDelay: "2s" }} />
       <div className="ambient-glow bottom-1/4 left-1/4 opacity-40" style={{ animationDelay: "4s" }} />
       
-      <GalaxyOrbit />
-      
       <div className="container mx-auto px-6 text-center relative z-10 flex flex-col items-center justify-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.8, rotate: -180 }}
@@ -40,13 +37,9 @@ export default function Hero() {
             {/* Subtle glow effect - more professional */}
             <div className="absolute inset-0 bg-gradient-to-br from-neon-cyan/10 to-electric-purple/10 blur-2xl md:blur-3xl animate-pulse" />
             
-            {/* Logo container with rotation - CSS animation for better performance */}
+            {/* Logo container */}
             <div
               className="relative w-full h-full z-10 rounded-full overflow-hidden"
-              style={{
-                animation: "logoRotate 20s linear infinite",
-                willChange: "transform",
-              }}
             >
               <Image
                 src={logoImage}
