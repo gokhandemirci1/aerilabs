@@ -19,20 +19,6 @@ const projects = [
     glowColor: "rgba(139, 92, 246, 0.6)",
     size: "w-14 h-14 md:w-18 md:h-18 lg:w-22 lg:h-22",
   },
-  {
-    name: "Project Gamma",
-    tech: "Vue.js • Node.js",
-    gradient: "from-blue-400 via-cyan-400 to-purple-500",
-    glowColor: "rgba(39, 224, 230, 0.5)",
-    size: "w-18 h-18 md:w-22 md:h-22 lg:w-26 lg:h-26",
-  },
-  {
-    name: "Project Delta",
-    tech: "React Native • GraphQL",
-    gradient: "from-purple-600 via-cyan-500 to-blue-400",
-    glowColor: "rgba(139, 92, 246, 0.5)",
-    size: "w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24",
-  },
 ];
 
 export default function GalaxyOrbit() {

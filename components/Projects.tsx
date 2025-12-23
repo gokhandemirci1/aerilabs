@@ -14,14 +14,6 @@ const projects = [
     name: "Project Beta",
     description: "AI-powered automation tool that streamlines complex workflows.",
   },
-  {
-    name: "Project Gamma",
-    description: "Enterprise-grade software solution for modern businesses.",
-  },
-  {
-    name: "Project Delta",
-    description: "Cutting-edge mobile application with seamless user experience.",
-  },
 ];
 
 export default function Projects() {
