@@ -11,8 +11,8 @@ const projects = [
     description: "KISIR is a women-only social app that helps women meet nearby, connect naturally, and build real-life friendships. From chat to real gatherings.",
   },
   {
-    name: "Project Beta",
-    description: "AI-powered automation tool that streamlines complex workflows.",
+    name: "IW Project",
+    description: "IW is a unified real estate ecosystem that connects buyers, developers, and advisors on a smart, data-driven platform, simplifying property discovery, investment decisions, and transaction management worldwide.",
   },
 ];
 

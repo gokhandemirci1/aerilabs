@@ -13,8 +13,9 @@ const projects = [
     size: "w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24",
   },
   {
-    name: "Project Beta",
+    name: "IW Project",
     tech: "React • Python",
+    description: "Unified real estate ecosystem platform",
     gradient: "from-purple-500 via-pink-500 to-cyan-400",
     glowColor: "rgba(139, 92, 246, 0.6)",
     size: "w-14 h-14 md:w-18 md:h-18 lg:w-22 lg:h-22",
