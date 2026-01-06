@@ -2,9 +2,11 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import Image from "next/image";
-import logoImage from "@/app/images/logo.jpg";
+// Image importunu sildik çünkü artık SVG kullanıyoruz
+// import Image from "next/image"; 
+// import logoImage from "@/app/images/logo.jpg";
 import SpaceBackground from "./SpaceBackground";
+import LogoConstruction from "./LogoConstruction"; // Yolu dosya yapına göre ayarla (örn: ../components/LogoConstruction)
 
 export default function Hero() {
   const scrollToSection = (id: string) => {
@@ -20,12 +22,12 @@ export default function Hero() {
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
       <SpaceBackground />
-      
+
       {/* Ambient Glow Background - Nebula Effects */}
       <div className="ambient-glow top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
       <div className="ambient-glow top-1/4 right-1/4 opacity-50" style={{ animationDelay: "2s" }} />
       <div className="ambient-glow bottom-1/4 left-1/4 opacity-40" style={{ animationDelay: "4s" }} />
-      
+
       <div className="container mx-auto px-6 text-center relative z-10 flex flex-col items-center justify-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.8, rotate: -180 }}
@@ -33,26 +35,20 @@ export default function Hero() {
           transition={{ duration: 1, delay: 0.2, type: "spring" }}
           className="mb-8 md:mb-10 lg:mb-12 flex items-center justify-center relative z-20"
         >
-          <div className="relative w-40 h-40 sm:w-44 sm:h-44 md:w-52 md:h-52 lg:w-60 lg:h-60 xl:w-64 xl:h-64 mx-auto">
-            {/* Subtle glow effect - more professional */}
-            <div className="absolute inset-0 bg-gradient-to-br from-neon-cyan/10 to-electric-purple/10 blur-2xl md:blur-3xl animate-pulse" />
-            
-            {/* Logo container */}
-            <div
-              className="relative w-full h-full z-10 rounded-full overflow-hidden"
-            >
-              <Image
-                src={logoImage}
-                alt="Aeri Labs Logo"
-                fill
-                className="object-cover rounded-full drop-shadow-[0_0_30px_rgba(39,224,230,0.3)] md:drop-shadow-[0_0_40px_rgba(39,224,230,0.4)]"
-                priority
-                sizes="(max-width: 640px) 160px, (max-width: 768px) 176px, (max-width: 1024px) 208px, (max-width: 1280px) 240px, 256px"
-              />
+          {/* Logo Boyutlandırma Container'ı */}
+          <div className="relative w-40 h-40 sm:w-44 sm:h-44 md:w-52 md:h-52 lg:w-60 lg:h-60 xl:w-64 xl:h-64 mx-auto flex items-center justify-center">
+
+            {/* Arkadaki Glow Efekti (SVG'nin arkasında parlama yapar) */}
+            <div className="absolute inset-0 bg-gradient-to-br from-neon-cyan/20 to-electric-purple/20 blur-2xl md:blur-3xl animate-pulse rounded-full" />
+
+            {/* Yeni SVG Logo Bileşeni */}
+            <div className="relative w-full h-full z-10 p-2">
+              <LogoConstruction />
             </div>
+
           </div>
         </motion.div>
-        
+
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -61,7 +57,7 @@ export default function Hero() {
         >
           Exploring the digital universe with experimental products & scalable software solutions.
         </motion.p>
-        
+
         <motion.button
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -81,7 +77,6 @@ export default function Hero() {
     </section>
   );
 }
-
 
 
 
